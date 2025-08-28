@@ -1,0 +1,6 @@
+@AplikacjaNawigacyjna.Services.TrafficApi_HostAddress = http://localhost:5178
+
+GET {{AplikacjaNawigacyjna.Services.TrafficApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

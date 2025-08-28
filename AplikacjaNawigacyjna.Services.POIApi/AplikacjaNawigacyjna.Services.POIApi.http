@@ -1,0 +1,6 @@
+@AplikacjaNawigacyjna.Services.POIApi_HostAddress = http://localhost:5063
+
+GET {{AplikacjaNawigacyjna.Services.POIApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
