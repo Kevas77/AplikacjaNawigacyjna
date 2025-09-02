@@ -7,38 +7,24 @@ namespace AplikacjaNawigacyjna.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILocationService _locationService;
         private readonly IMapPointService _mapPointService;
         private readonly IRouteService _routeService;
         private readonly ITrafficService _trafficService;
         private readonly IPOIService _poiService;
+        private readonly IRouteHistoryService _routeHistoryService;
 
-        public HomeController(ILocationService locationService, IMapPointService mapPointService, IRouteService routeService, ITrafficService trafficService, IPOIService poiService)
+        public HomeController(IMapPointService mapPointService, IRouteService routeService, ITrafficService trafficService, IPOIService poiService, IRouteHistoryService routeHistoryService)
         {
-            _locationService = locationService;
             _mapPointService = mapPointService;
             _routeService = routeService;
             _trafficService = trafficService;
             _poiService = poiService;
+            _routeHistoryService = routeHistoryService;
         }
 
         public async Task<IActionResult> Index()
         {
             var model = new ViewModel();
-            var userId = "string";
-            var responseCurrent = await _locationService.GetCurrentLocationAsync(userId);
-            LocationDto loc = new LocationDto();
-            if (responseCurrent != null && responseCurrent.Result != null)
-            {
-                loc = JsonConvert.DeserializeObject<LocationDto>(responseCurrent.Result.ToString());
-            }
-            else
-            {
-                loc.UserId = "1234";
-                loc.Latitude = 7;
-                loc.Longitude = 7;  
-            }
-            model.current = loc;
             List<MapPointDto> mapPoints = new();
             ResponseDto? responsePoints= await _mapPointService.GetAllMapPointsAsync();
             if (responsePoints != null && responsePoints.IsSuccess)
@@ -99,18 +85,38 @@ namespace AplikacjaNawigacyjna.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CalculateRoute([FromBody] RouteRequestDto request)
+        public async Task<IActionResult> CalculateRoute([FromBody] RouteDto request)
         {
-            var response = await _routeService.Calculate(request);
+            var routeRequest = new RouteRequestDto
+            {
+                Origin = request.Origin,
+                Destination = request.Destination
+            };
+            var response = await _routeService.Calculate(routeRequest);
             if (response != null && response.Result != null)
             {
                 RouteResponseDto result = JsonConvert.DeserializeObject<RouteResponseDto>(response.Result.ToString());
+
+                var routeRecord = new RouteRecordDto
+                {
+                    Code = "code",
+                    StartName = request.StartName,
+                    EndName = request.EndName,
+                    StartLatitude = request.Origin.Latitude,
+                    StartLongitude = request.Origin.Longitude,
+                    EndLatitude = request.Destination.Latitude,
+                    EndLongitude = request.Destination.Longitude,
+                    Distance = result.DistanceInMeters
+                };
+                await _routeHistoryService.CreateRouteRecordAsync(routeRecord);
+
                 return Json(new
                 {
                     path = result.Path.Select(p => new { latitude = p.Latitude, longitude = p.Longitude }),
                     distanceInMeters = result.DistanceInMeters
                 });
             }
+
             return Json(new { path = new List<object>(), distanceInMeters = 0 });
         }
 

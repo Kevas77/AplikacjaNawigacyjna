@@ -10,13 +10,11 @@ namespace AplikacjaNawigacyjna.Services.LocalizationAPI.Services
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IGeocodingService _geocodingService;
 
-        public LocationService(AppDbContext context, IMapper mapper, IGeocodingService geocodingService)
+        public LocationService(AppDbContext context, IMapper mapper) 
         {
             _context = context;
             _mapper = mapper;
-            _geocodingService = geocodingService;
         }
 
         public async Task AddLocationAsync(LocationDto dto)
@@ -35,7 +33,6 @@ namespace AplikacjaNawigacyjna.Services.LocalizationAPI.Services
 
             if (loc == null) return null;
             var dto = _mapper.Map<LocationDto>(loc);
-            dto.Address = "Rynek Sanok";//await _geocodingService.GetAddressAsync(dto.Latitude, dto.Longitude);
 
             return dto;
         }

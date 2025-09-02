@@ -1,0 +1,32 @@
+@model IEnumerable<RouteRecordDto>
+
+@{
+    ViewData["Title"] = "Historia tras";
+}
+
+<h2>Historia tras</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pocz¹tek</th>
+            <th>Koniec</th>
+            <th>Dystans (km)</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var route in Model)
+    {
+        <tr>
+            <td>@route.StartName</td>
+            <td>@route.EndName</td>
+            <td>@(route.Distance / 1000.0)</td>
+            <td>
+                <form asp-action="Delete" asp-route-code="@route.Code" method="post" style="display:inline;" onsubmit="return confirm('Czy na pewno chcesz usun¹æ tê trasê?');">
+                    <button type="submit" class="btn btn-danger btn-sm">Usuñ</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

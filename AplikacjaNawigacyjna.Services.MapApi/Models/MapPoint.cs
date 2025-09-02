@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetTopologySuite.Geometries;
 using System.ComponentModel.DataAnnotations;
 
 namespace AplikacjaNawigacyjna.Services.MapApi.Models

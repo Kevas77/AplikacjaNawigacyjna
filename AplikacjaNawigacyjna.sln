@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaNawigacyjna.Services.LocalizationAPI", "AplikacjaNawigacyjna.Services.LocalizationAPI\AplikacjaNawigacyjna.Services.LocalizationAPI.csproj", "{120C1282-BFFD-48B2-868C-5C9F3A9D26CF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaNawigacyjna.Services.MapApi", "AplikacjaNawigacyjna.Services.MapApi\AplikacjaNawigacyjna.Services.MapApi.csproj", "{F5B8B909-5752-4181-978C-EF9726836B7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaNawigacyjna.Services.TrafficApi", "AplikacjaNawigacyjna.Services.TrafficApi\AplikacjaNawigacyjna.Services.TrafficApi.csproj", "{AF11702C-71C2-4D2F-87B4-5CF5D26A5609}"
@@ -19,16 +17,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{9E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaNawigacyjna.Web", "AplikacjaNawigacyjna.Web\AplikacjaNawigacyjna.Web.csproj", "{AFE68D70-7C59-4429-B574-40AB9CEA4B50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaNawigacyjna.Services.RouteHistory", "AplikacjaNawigacyjna.Services.RouteHistory\AplikacjaNawigacyjna.Services.RouteHistory.csproj", "{0317F6B4-852F-4316-94D6-B103FA73C43C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{120C1282-BFFD-48B2-868C-5C9F3A9D26CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{120C1282-BFFD-48B2-868C-5C9F3A9D26CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{120C1282-BFFD-48B2-868C-5C9F3A9D26CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{120C1282-BFFD-48B2-868C-5C9F3A9D26CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5B8B909-5752-4181-978C-EF9726836B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B8B909-5752-4181-978C-EF9726836B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B8B909-5752-4181-978C-EF9726836B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,17 +45,21 @@ Global
 		{AFE68D70-7C59-4429-B574-40AB9CEA4B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE68D70-7C59-4429-B574-40AB9CEA4B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFE68D70-7C59-4429-B574-40AB9CEA4B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0317F6B4-852F-4316-94D6-B103FA73C43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0317F6B4-852F-4316-94D6-B103FA73C43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0317F6B4-852F-4316-94D6-B103FA73C43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0317F6B4-852F-4316-94D6-B103FA73C43C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{120C1282-BFFD-48B2-868C-5C9F3A9D26CF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F5B8B909-5752-4181-978C-EF9726836B7F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{AF11702C-71C2-4D2F-87B4-5CF5D26A5609} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{751FA0F5-AF21-4514-A741-96A92DD63662} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0F0A3840-F9A8-4F26-B208-9CF3B34B2E22} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{AFE68D70-7C59-4429-B574-40AB9CEA4B50} = {9E59C484-7852-4757-B696-70D36E15E853}
+		{0317F6B4-852F-4316-94D6-B103FA73C43C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {072D252F-49B4-4F66-98EF-8CF2AD1FBC38}

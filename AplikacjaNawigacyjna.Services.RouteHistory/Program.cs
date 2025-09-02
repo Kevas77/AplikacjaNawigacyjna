@@ -1,10 +1,7 @@
-using AplikacjaNawigacyjna.Services.LocalizationAPI.Data;
-using AplikacjaNawigacyjna.Services.LocalizationAPI.Services;
-using AplikacjaNawigacyjna.Services.LocalizationAPI.Services.IServices;
+using AplikacjaNawigacyjna.Services.RouteHistory;
+using AplikacjaNawigacyjna.Services.RouteHistory.Data;
 using AutoMapper;
-using Magisterka.Services.ProductAPI;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,13 +13,16 @@ IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<ILocationService, LocationService>();
+// Add services to the container.
+
 builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -30,19 +30,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
-ApplyMigrations();
-app.Run();
 
-void ApplyMigrations()
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var _db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        if (_db.Database.GetPendingMigrations().Any())
-        {
-            _db.Database.Migrate();
-        }
-    }
-}
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

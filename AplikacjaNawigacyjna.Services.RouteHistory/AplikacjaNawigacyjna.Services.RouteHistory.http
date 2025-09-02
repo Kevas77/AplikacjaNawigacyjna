@@ -1,0 +1,6 @@
+@AplikacjaNawigacyjna.Services.RouteHistory_HostAddress = http://localhost:5107
+
+GET {{AplikacjaNawigacyjna.Services.RouteHistory_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
