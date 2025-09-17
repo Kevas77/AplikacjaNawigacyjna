@@ -1,6 +1,0 @@
-@AplikacjaNawigacyjna.Services.LocalizationAPI_HostAddress = http://localhost:5062
-
-GET {{AplikacjaNawigacyjna.Services.LocalizationAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
